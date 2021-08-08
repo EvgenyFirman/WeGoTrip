@@ -1,0 +1,6 @@
+framework module Pods_TestAppWeGo {
+  umbrella header "Pods-TestAppWeGo-umbrella.h"
+
+  export *
+  module * { export * }
+}
