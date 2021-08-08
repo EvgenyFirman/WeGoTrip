@@ -153,8 +153,8 @@ class ViewController: UIViewController {
         // Make constraints of welcome label
         welcomeLabel.snp.makeConstraints { maker in
             maker.left.equalTo(20)
-            maker.width.equalTo(220)
-            maker.top.equalTo(stepLabel).inset(50)
+            maker.width.equalTo(250)
+            maker.top.equalTo(stepLabel).inset(70)
         }
         
         
@@ -178,7 +178,7 @@ class ViewController: UIViewController {
             
             maker.width.equalTo(view.frame.size.width)
             
-            maker.top.equalTo(stepLabel).inset(130)
+            maker.top.equalTo(welcomeLabel).offset(80)
             
         }
         
@@ -229,8 +229,152 @@ class ViewController: UIViewController {
             maker.width.equalTo(view.frame.size.width + 10)
             maker.left.equalTo(-10)
             maker.top.equalTo(descriptionLabel).offset(70)
+//            maker.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+        }
+        
+        
+        
+        
+        // INITIALIZE MINI PLAYER SWIFT
+        let miniPlayer = UIView()
+        
+        miniPlayer.backgroundColor = .white
+        
+        view.addSubview(miniPlayer)
+        
+        miniPlayer.snp.makeConstraints { maker in
+            maker.height.equalTo(80)
+            maker.width.equalTo(view.frame.size.width)
+            maker.top.equalTo(progressViewBottom).offset(6)
             maker.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
         }
+        
+        
+        
+        //  INITIALIZE MORE BUTTON IN MINI PLAYER
+        let miniMoreButton = UIButton()
+    
+        // Configuring SF Icon
+        let boldConfig3 = UIImage.SymbolConfiguration(pointSize: 27)
+        let boldEllipsisMini = UIImage(systemName: "ellipsis", withConfiguration: boldConfig3)
+        miniMoreButton.setImage(boldEllipsisMini, for: .normal)
+        miniMoreButton.tintColor = .black
+        
+        // Add button to view
+        miniPlayer.addSubview(miniMoreButton)
+        
+        // Add constraints to options button
+        miniMoreButton.snp.makeConstraints { maker in
+            maker.left.equalTo(15)
+            maker.top.centerY.equalTo(miniPlayer)
+        }
+        
+        
+        
+        
+        //  INITIALIZE MORE BUTTON IN MINI PLAYER
+        let miniPauseButton = UIButton()
+    
+        // Configuring SF Icon
+        let boldPauseMini = UIImage(systemName: "pause.fill", withConfiguration: boldConfig3)
+        miniPauseButton.setImage(boldPauseMini, for: .normal)
+        miniPauseButton.tintColor = .black
+        
+        // Add button to view
+        miniPlayer.addSubview(miniPauseButton)
+        
+        // Add constraints to options button
+        miniPauseButton.snp.makeConstraints { maker in
+            maker.left.equalTo(miniMoreButton).offset(40)
+            maker.top.centerY.equalTo(miniPlayer)
+        }
+        
+        
+        
+        
+        
+        //  INITIALIZE DESCRIPTION BUTTON IN MINI PLAYER
+        let miniDescription = UIButton()
+    
+        // Configuring SF Icon
+        miniDescription.setTitleColor(.black, for: .normal)
+        miniDescription.setTitle("Добро пожаловать в зимний дворец", for: .normal)
+        miniDescription.titleLabel?.textAlignment = .natural
+        miniDescription.titleLabel?.font = .systemFont(ofSize: 14)
+        miniDescription.titleLabel?.lineBreakMode = .byWordWrapping
+
+        
+        // Add button to view
+        miniPlayer.addSubview(miniDescription)
+        
+        // Add constraints to options button
+        miniDescription.snp.makeConstraints { maker in
+            maker.width.equalTo(150)
+            maker.height.equalTo(miniPlayer.snp.height)
+            maker.left.equalTo(miniPauseButton).offset(40)
+            maker.top.centerY.equalTo(miniPlayer)
+            
+        }
+        
+        
+        
+        //  INITIALIZE PLAYFORWARD5 BUTTON IN MINI PLAYER
+        let miniForwardFiveButton = UIButton()
+    
+        // Configuring SF Icon
+        let boldForwardFiveMini = UIImage(systemName: "goforward.10", withConfiguration: boldConfig3)
+        miniForwardFiveButton.setImage(boldForwardFiveMini, for: .normal)
+        miniForwardFiveButton.tintColor = UIColor(red: 211/255, green: 211/255, blue: 211/255, alpha: 1)
+        
+        // Add button to view
+        miniPlayer.addSubview(miniForwardFiveButton)
+        
+        // Add constraints to options button
+        miniForwardFiveButton.snp.makeConstraints { maker in
+            maker.right.equalTo(-15)
+            maker.top.centerY.equalTo(miniPlayer)
+        }
+        
+        
+        
+        //  INITIALIZE PLAYFORWARD5 BUTTON IN MINI PLAYER
+        let speedButton = UIButton()
+    
+        // Configuring SF Icon
+        let boldSpeedButton = UIImage(systemName: "1.circle", withConfiguration: boldConfig3)
+        speedButton.setImage(boldSpeedButton, for: .normal)
+        speedButton.tintColor = UIColor(red: 211/255, green: 211/255, blue: 211/255, alpha: 1)
+        
+        // Add button to view
+        miniPlayer.addSubview(speedButton)
+        
+        // Add constraints to options button
+        speedButton.snp.makeConstraints { maker in
+            maker.right.equalTo(miniForwardFiveButton).inset(50)
+            maker.top.centerY.equalTo(miniPlayer)
+        }
+        
+        
+        
+        
+        //  INITIALIZE PLAYFORWARD5 BUTTON IN MINI PLAYER
+        let miniBackwardFiveButton = UIButton()
+    
+        // Configuring SF Icon
+        let boldBackwardFiveMini = UIImage(systemName: "gobackward.10", withConfiguration: boldConfig3)
+        miniBackwardFiveButton.setImage(boldBackwardFiveMini, for: .normal)
+        miniBackwardFiveButton.tintColor = UIColor(red: 211/255, green: 211/255, blue: 211/255, alpha: 1)
+        
+        // Add button to view
+        miniPlayer.addSubview(miniBackwardFiveButton)
+        
+        // Add constraints to options button
+        miniBackwardFiveButton.snp.makeConstraints { maker in
+            maker.right.equalTo(speedButton).inset(50)
+            maker.top.centerY.equalTo(miniPlayer)
+        }
+
+        
     }
 }
 
