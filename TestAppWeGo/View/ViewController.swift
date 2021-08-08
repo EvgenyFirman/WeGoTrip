@@ -8,6 +8,7 @@ import SnapKit
 import UIKit
 
 
+@available(iOS 13.0, *)
 class ViewController: UIViewController {
     
     override func viewDidLoad() {
@@ -309,14 +310,17 @@ class ViewController: UIViewController {
         
         // Add constraints to options button
         miniDescription.snp.makeConstraints { maker in
-            maker.width.equalTo(150)
+            maker.width.equalTo(140)
             maker.height.equalTo(miniPlayer.snp.height)
             maker.left.equalTo(miniPauseButton).offset(40)
             maker.top.centerY.equalTo(miniPlayer)
             
         }
         
+        // Open PLAYER Screen
+        miniDescription.addTarget(self, action: #selector(openPlayerScreen), for: .touchUpInside)
         
+
         
         //  INITIALIZE PLAYFORWARD5 BUTTON IN MINI PLAYER
         let miniForwardFiveButton = UIButton()
@@ -350,7 +354,7 @@ class ViewController: UIViewController {
         
         // Add constraints to options button
         speedButton.snp.makeConstraints { maker in
-            maker.right.equalTo(miniForwardFiveButton).inset(50)
+            maker.right.equalTo(miniForwardFiveButton).inset(45)
             maker.top.centerY.equalTo(miniPlayer)
         }
         
@@ -370,11 +374,20 @@ class ViewController: UIViewController {
         
         // Add constraints to options button
         miniBackwardFiveButton.snp.makeConstraints { maker in
-            maker.right.equalTo(speedButton).inset(50)
+            maker.right.equalTo(speedButton).inset(45)
             maker.top.centerY.equalTo(miniPlayer)
         }
 
         
+    }
+    
+    // Function for opening new screen
+    @objc func openPlayerScreen() {
+       
+        let playerViewController = PlayerViewController()
+        
+        present(playerViewController, animated: true, completion: nil)
+    
     }
 }
 
