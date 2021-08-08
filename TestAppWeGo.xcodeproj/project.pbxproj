@@ -12,6 +12,7 @@
 		5C74352326BD8F7500D2608B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C74352226BD8F7500D2608B /* ViewController.swift */; };
 		5C74352826BD8F7700D2608B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C74352726BD8F7700D2608B /* Assets.xcassets */; };
 		5C74352B26BD8F7700D2608B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C74352926BD8F7700D2608B /* LaunchScreen.storyboard */; };
+		5CC3F52E26C086E8006F178C /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC3F52D26C086E8006F178C /* PlayerViewController.swift */; };
 		8FE16917AE8DBD2F772C1096 /* Pods_TestAppWeGo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF486DD078105F66A019E5B7 /* Pods_TestAppWeGo.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		5C74352726BD8F7700D2608B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C74352A26BD8F7700D2608B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C74352C26BD8F7700D2608B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CC3F52D26C086E8006F178C /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		AF486DD078105F66A019E5B7 /* Pods_TestAppWeGo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestAppWeGo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -79,9 +81,8 @@
 			isa = PBXGroup;
 			children = (
 				5C74353226BEA79300D2608B /* Application */,
-				5C74352226BD8F7500D2608B /* ViewController.swift */,
-				5C74352726BD8F7700D2608B /* Assets.xcassets */,
-				5C74352926BD8F7700D2608B /* LaunchScreen.storyboard */,
+				5CC3F53026C0909F006F178C /* View */,
+				5CC3F52F26C09086006F178C /* Assets */,
 				5C74352C26BD8F7700D2608B /* Info.plist */,
 			);
 			path = TestAppWeGo;
@@ -94,6 +95,24 @@
 				5C74352026BD8F7500D2608B /* SceneDelegate.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		5CC3F52F26C09086006F178C /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				5C74352726BD8F7700D2608B /* Assets.xcassets */,
+				5C74352926BD8F7700D2608B /* LaunchScreen.storyboard */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		5CC3F53026C0909F006F178C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5C74352226BD8F7500D2608B /* ViewController.swift */,
+				5CC3F52D26C086E8006F178C /* PlayerViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C74352326BD8F7500D2608B /* ViewController.swift in Sources */,
+				5CC3F52E26C086E8006F178C /* PlayerViewController.swift in Sources */,
 				5C74351F26BD8F7500D2608B /* AppDelegate.swift in Sources */,
 				5C74352126BD8F7500D2608B /* SceneDelegate.swift in Sources */,
 			);
@@ -354,6 +374,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LB89UARNN8;
 				INFOPLIST_FILE = TestAppWeGo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -361,7 +382,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.EugeneFirman.testAppWeGo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -374,6 +395,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LB89UARNN8;
 				INFOPLIST_FILE = TestAppWeGo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -381,7 +403,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.EugeneFirman.testAppWeGo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
