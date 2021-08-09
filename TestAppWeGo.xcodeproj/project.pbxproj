@@ -13,6 +13,7 @@
 		5C74352826BD8F7700D2608B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C74352726BD8F7700D2608B /* Assets.xcassets */; };
 		5C74352B26BD8F7700D2608B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C74352926BD8F7700D2608B /* LaunchScreen.storyboard */; };
 		5CC3F52E26C086E8006F178C /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC3F52D26C086E8006F178C /* PlayerViewController.swift */; };
+		5CC3F53226C0AF25006F178C /* StageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC3F53126C0AF25006F178C /* StageViewController.swift */; };
 		8FE16917AE8DBD2F772C1096 /* Pods_TestAppWeGo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF486DD078105F66A019E5B7 /* Pods_TestAppWeGo.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		5C74352A26BD8F7700D2608B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C74352C26BD8F7700D2608B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CC3F52D26C086E8006F178C /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		5CC3F53126C0AF25006F178C /* StageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageViewController.swift; sourceTree = "<group>"; };
 		AF486DD078105F66A019E5B7 /* Pods_TestAppWeGo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestAppWeGo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -111,6 +113,7 @@
 			children = (
 				5C74352226BD8F7500D2608B /* ViewController.swift */,
 				5CC3F52D26C086E8006F178C /* PlayerViewController.swift */,
+				5CC3F53126C0AF25006F178C /* StageViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 			files = (
 				5C74352326BD8F7500D2608B /* ViewController.swift in Sources */,
 				5CC3F52E26C086E8006F178C /* PlayerViewController.swift in Sources */,
+				5CC3F53226C0AF25006F178C /* StageViewController.swift in Sources */,
 				5C74351F26BD8F7500D2608B /* AppDelegate.swift in Sources */,
 				5C74352126BD8F7500D2608B /* SceneDelegate.swift in Sources */,
 			);
