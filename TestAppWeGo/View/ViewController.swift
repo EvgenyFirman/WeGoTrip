@@ -11,6 +11,28 @@ import UIKit
 @available(iOS 13.0, *)
 class ViewController: UIViewController {
     
+    // INITIALIZING VIEW ELEMENTS
+    
+    let progressView =  UIProgressView(progressViewStyle: .bar)
+    let closeButton = UIButton()
+    let optionsButton = UIButton()
+    let stepLabel = UILabel()
+    let welcomeLabel = UILabel()
+    let mainImageView = CustomImageView()
+    let descriptionLabel = UILabel()
+    let progressViewBottom = UIProgressView(progressViewStyle: .bar)
+    let miniPlayer = UIView()
+    let miniMoreButton = UIButton()
+    let miniPauseButton = UIButton()
+    let miniDescription = UIButton()
+    let speedButton = UIButton()
+    let miniBackwardFiveButton = UIButton()
+    let miniForwardFiveButton = UIButton()
+
+    let urlString = URL(string: "https://app.surprizeme.ru/media/store/1186_i1KaYnj_8DuYTzc.jpg")
+    
+    
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -18,15 +40,16 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         
         // Do any additional setup after loading the view.
+        
         intialize()
+        
     }
+    
     
 
     private func intialize(){
         
         // INIT OF PROGRESS VIEW
-        let progressView =  UIProgressView(progressViewStyle: .bar)
-        
         // Progressview trackTint color
         progressView.trackTintColor = UIColor(red: 232/255, green: 232/255, blue: 232/255, alpha: 1)
         
@@ -55,8 +78,6 @@ class ViewController: UIViewController {
         
         
         // INIT OF CLOSE BUTTON
-        let closeButton = UIButton()
-        
         closeButton.backgroundColor = .white
         
         // Button corner radius set up
@@ -88,9 +109,8 @@ class ViewController: UIViewController {
         }
         
 
-        // INIT OF OPTIONS BUTTON
-        let optionsButton = UIButton()
         
+        // INIT OF OPTIONS BUTTON
         optionsButton.backgroundColor = .white
         
         // Button corner radius set up
@@ -124,8 +144,6 @@ class ViewController: UIViewController {
         
         
         // INITIALIZE STEP TEXT
-        let stepLabel = UILabel()
-        
         // Configuring Step Label
         stepLabel.text = "STEP 3/10"
         stepLabel.font = stepLabel.font.withSize(15)
@@ -140,9 +158,10 @@ class ViewController: UIViewController {
         }
         
         
-        // INITIALIZE WELCOME TEXT
-        let welcomeLabel = UILabel()
         
+        
+        // INITIALIZE WELCOME TEXT
+    
         // Configuring Welcome Label
         welcomeLabel.text = "Добро Пожаловать в Зимний Дворец"
         welcomeLabel.font = UIFont.systemFont(ofSize: 22, weight: .bold)
@@ -163,13 +182,11 @@ class ViewController: UIViewController {
         
         // INITIALIZE MAIN IMAGE
         
-        let mainImage = UIImage()
-        
-        let mainImageView = UIImageView(image: mainImage)
-        
-        let imagePicture = UIImage(named: "image")
-        
-        mainImageView.image = imagePicture
+        if let url = urlString {
+            
+            mainImageView.loadImage(from: url)
+            
+        }
         
         mainImageView.contentMode = .scaleAspectFill
         
@@ -185,8 +202,8 @@ class ViewController: UIViewController {
         
         
         
+        
         // INITIALIZE DESCRIPTION TEXT
-        let descriptionLabel = UILabel()
 
         // Configuring description Label
         descriptionLabel.text = "Do you feel shouting Fight! Fight!, with the mad crowd wearing your comfortable toga today?"
@@ -205,8 +222,8 @@ class ViewController: UIViewController {
         
         
         
+        
         // INIT OF PROGRESS VIEW BOTTOM
-        let progressViewBottom = UIProgressView(progressViewStyle: .bar)
 
         // Progressview trackTint color
         progressViewBottom.trackTintColor = UIColor(red: 232/255, green: 232/255, blue: 232/255, alpha: 1)
@@ -237,8 +254,7 @@ class ViewController: UIViewController {
         
         
         // INITIALIZE MINI PLAYER SWIFT
-        let miniPlayer = UIView()
-        
+
         miniPlayer.backgroundColor = .white
         
         view.addSubview(miniPlayer)
@@ -253,8 +269,7 @@ class ViewController: UIViewController {
         
         
         //  INITIALIZE MORE BUTTON IN MINI PLAYER
-        let miniMoreButton = UIButton()
-    
+
         // Configuring SF Icon
         let boldConfig3 = UIImage.SymbolConfiguration(pointSize: 27)
         let boldEllipsisMini = UIImage(systemName: "ellipsis", withConfiguration: boldConfig3)
@@ -274,7 +289,6 @@ class ViewController: UIViewController {
         
         
         //  INITIALIZE MORE BUTTON IN MINI PLAYER
-        let miniPauseButton = UIButton()
     
         // Configuring SF Icon
         let boldPauseMini = UIImage(systemName: "pause.fill", withConfiguration: boldConfig3)
@@ -295,7 +309,6 @@ class ViewController: UIViewController {
         
         
         //  INITIALIZE DESCRIPTION BUTTON IN MINI PLAYER
-        let miniDescription = UIButton()
     
         // Configuring SF Icon
         miniDescription.setTitleColor(.black, for: .normal)
@@ -323,8 +336,7 @@ class ViewController: UIViewController {
 
         
         //  INITIALIZE PLAYFORWARD5 BUTTON IN MINI PLAYER
-        let miniForwardFiveButton = UIButton()
-    
+
         // Configuring SF Icon
         let boldForwardFiveMini = UIImage(systemName: "goforward.10", withConfiguration: boldConfig3)
         miniForwardFiveButton.setImage(boldForwardFiveMini, for: .normal)
@@ -342,7 +354,6 @@ class ViewController: UIViewController {
         
         
         //  INITIALIZE PLAYFORWARD5 BUTTON IN MINI PLAYER
-        let speedButton = UIButton()
     
         // Configuring SF Icon
         let boldSpeedButton = UIImage(systemName: "1.circle", withConfiguration: boldConfig3)
@@ -362,8 +373,6 @@ class ViewController: UIViewController {
         
         
         //  INITIALIZE PLAYFORWARD5 BUTTON IN MINI PLAYER
-        let miniBackwardFiveButton = UIButton()
-    
         // Configuring SF Icon
         let boldBackwardFiveMini = UIImage(systemName: "gobackward.10", withConfiguration: boldConfig3)
         miniBackwardFiveButton.setImage(boldBackwardFiveMini, for: .normal)
@@ -380,6 +389,7 @@ class ViewController: UIViewController {
 
         
     }
+    
     
     // Function for opening new screen
     @objc func openPlayerScreen() {
