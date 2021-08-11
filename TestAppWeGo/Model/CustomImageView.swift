@@ -9,7 +9,8 @@ import UIKit
 
 class CustomImageView: UIImageView {
 
-
+    // Loading image from remote API
+    
     func loadImage(from url: URL) {
         
         let task = URLSession.shared.dataTask(with: url) { (data,response,error) in

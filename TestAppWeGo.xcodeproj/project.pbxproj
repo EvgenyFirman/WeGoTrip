@@ -67,7 +67,6 @@
 			isa = PBXGroup;
 			children = (
 				5C74351D26BD8F7500D2608B /* TestAppWeGo */,
-				5C74351C26BD8F7500D2608B /* Products */,
 				57A7B370EF1499AEBEAEF6E2 /* Pods */,
 				000ADA4D42442425F84FC24C /* Frameworks */,
 			);
@@ -79,16 +78,18 @@
 				5C74351B26BD8F7500D2608B /* TestAppWeGo.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		5C74351D26BD8F7500D2608B /* TestAppWeGo */ = {
 			isa = PBXGroup;
 			children = (
 				5C74353226BEA79300D2608B /* Application */,
+				5C74351C26BD8F7500D2608B /* Products */,
+				5CD059EB26C43CEB002DCFD8 /* Model */,
 				5CC3F53026C0909F006F178C /* View */,
 				5CC3F52F26C09086006F178C /* Assets */,
 				5C74352C26BD8F7700D2608B /* Info.plist */,
-				5CD059E926C3E14E002DCFD8 /* CustomImageView.swift */,
 			);
 			path = TestAppWeGo;
 			sourceTree = "<group>";
@@ -119,6 +120,14 @@
 				5CC3F53126C0AF25006F178C /* StageViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		5CD059EB26C43CEB002DCFD8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5CD059E926C3E14E002DCFD8 /* CustomImageView.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
