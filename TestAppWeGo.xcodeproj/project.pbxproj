@@ -17,6 +17,7 @@
 		5CD059EA26C3E14E002DCFD8 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD059E926C3E14E002DCFD8 /* CustomImageView.swift */; };
 		5CD059ED26C43E25002DCFD8 /* StageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD059EC26C43E25002DCFD8 /* StageTableViewCell.swift */; };
 		5CD059EF26C574FD002DCFD8 /* StageInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD059EE26C574FD002DCFD8 /* StageInstance.swift */; };
+		5CD059F426C5C91E002DCFD8 /* track.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5CD059F326C5C91E002DCFD8 /* track.mp3 */; };
 		8FE16917AE8DBD2F772C1096 /* Pods_TestAppWeGo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF486DD078105F66A019E5B7 /* Pods_TestAppWeGo.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		5CD059E926C3E14E002DCFD8 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		5CD059EC26C43E25002DCFD8 /* StageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageTableViewCell.swift; sourceTree = "<group>"; };
 		5CD059EE26C574FD002DCFD8 /* StageInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageInstance.swift; sourceTree = "<group>"; };
+		5CD059F326C5C91E002DCFD8 /* track.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = track.mp3; sourceTree = "<group>"; };
 		AF486DD078105F66A019E5B7 /* Pods_TestAppWeGo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestAppWeGo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -89,11 +91,12 @@
 			isa = PBXGroup;
 			children = (
 				5C74353226BEA79300D2608B /* Application */,
-				5C74351C26BD8F7500D2608B /* Products */,
 				5CD059EB26C43CEB002DCFD8 /* Model */,
 				5CC3F53026C0909F006F178C /* View */,
+				5CD059F026C5B572002DCFD8 /* Audio */,
 				5CC3F52F26C09086006F178C /* Assets */,
 				5C74352C26BD8F7700D2608B /* Info.plist */,
+				5C74351C26BD8F7500D2608B /* Products */,
 			);
 			path = TestAppWeGo;
 			sourceTree = "<group>";
@@ -134,6 +137,14 @@
 				5CD059EE26C574FD002DCFD8 /* StageInstance.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		5CD059F026C5B572002DCFD8 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				5CD059F326C5C91E002DCFD8 /* track.mp3 */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +208,7 @@
 			files = (
 				5C74352B26BD8F7700D2608B /* LaunchScreen.storyboard in Resources */,
 				5C74352826BD8F7700D2608B /* Assets.xcassets in Resources */,
+				5CD059F426C5C91E002DCFD8 /* track.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -421,17 +421,7 @@ class PlayerViewController: UIViewController {
     @objc func openStageScreen() {
        
         let stageViewController = StageViewController()
-        
-        // Transition right to left animation
-        let transition = CATransition()
-        transition.duration = 0.5
-        transition.type = CATransitionType.push
-        transition.subtype = CATransitionSubtype.fromRight
-        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
-        view.window!.layer.add(transition, forKey: kCATransition)
-        //
-        
-        stageViewController.modalPresentationStyle = .fullScreen
+  
         
         let stageInstanceSelf = self.stageInstance
             
