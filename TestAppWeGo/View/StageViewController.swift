@@ -156,7 +156,7 @@ class StageViewController: UIViewController {
 
     // Function for closing view controller
     @objc func closeViewController() {
-       
+    
         dismiss(animated: true, completion: nil)
     
     }

@@ -20,7 +20,6 @@ class StageTableViewCell: UITableViewCell {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        
         setUpTableViewCell()
         
     }

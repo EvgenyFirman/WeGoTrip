@@ -6,51 +6,59 @@
 //
 import SnapKit
 import UIKit
+import AVFoundation
 
+// MARK: - Main View Controller Initialization
 
 @available(iOS 13.0, *)
+
 class ViewController: UIViewController {
     
-    // INITIALIZING VIEW ELEMENTS
+    // INIT PLAYER
+    var player: AVAudioPlayer?
     
-    let progressView =  UIProgressView(progressViewStyle: .bar)
-    let closeButton = UIButton()
-    let optionsButton = UIButton()
-    let stepLabel = UILabel()
-    let welcomeLabel = UILabel()
-    let mainImageView = CustomImageView()
-    let descriptionLabel = UILabel()
-    let progressViewBottom = UIProgressView(progressViewStyle: .bar)
-    let miniPlayer = UIView()
-    let miniMoreButton = UIButton()
-    let miniPauseButton = UIButton()
-    let miniDescription = UIButton()
-    let speedButton = UIButton()
-    let miniBackwardFiveButton = UIButton()
-    let miniForwardFiveButton = UIButton()
-
+    // Initializing View Elements
+    var progressView =  UIProgressView(progressViewStyle: .bar)
+    var closeButton = UIButton()
+    var optionsButton = UIButton()
+    var stepLabel = UILabel()
+    var welcomeLabel = UILabel()
+    var mainImageView = CustomImageView()
+    var descriptionLabel = UILabel()
+    var progressViewBottom = UIProgressView(progressViewStyle: .bar)
+    var miniPlayer = UIView()
+    var miniMoreButton = UIButton()
+    var miniPauseButton = UIButton()
+    var miniDescription = UIButton()
+    var speedButton = UIButton()
+    var miniBackwardFiveButton = UIButton()
+    var miniForwardFiveButton = UIButton()
+    
+    // URL String initialization
     let urlString = URL(string: "https://app.surprizeme.ru/media/store/1186_i1KaYnj_8DuYTzc.jpg")
     
+    // Stage Instance Struct for data
     var stageInstance: [StageInstance] = [StageInstance(id: 3, total: 10, name: "Триумфальная Арка",descText1: "On no twenty spring of in esteem spirit likely estate. Continue new you declared differed learning bringing honoured. At mean mind so upon they rent am walk. Shortly am waiting inhabit smiling he chiefly of in. Lain tore time gone him his dear sure. Fat decisively estimating affronting assistance not. Resolve pursuit regular so calling me. West he plan girl been my then up no", descText2: "Get ready to use most fascinating basilica in the world. But first lets make you several tips about your travel to Ibiza",descText3: "Get ready to use most fascinating basilica in the world. But first lets make you several tips about your travel to Ibiza")]
     
     
     override func viewDidLoad() {
-        
+    
         super.viewDidLoad()
-        
-        view.backgroundColor = .white
-        
-        // Do any additional setup after loading the view.
         
         intialize()
         
     }
     
     
-
+// MARK: - Initialize function for View Controller SetUp
     private func intialize(){
         
-        // INIT OF PROGRESS VIEW
+        // Making main View Controller background as white
+        view.backgroundColor = .white
+        
+        
+        // INIT OF PROGRESS VIEW //
+        
         // Progressview trackTint color
         progressView.trackTintColor = UIColor(red: 232/255, green: 232/255, blue: 232/255, alpha: 1)
         
@@ -78,7 +86,7 @@ class ViewController: UIViewController {
         
         
         
-        // INIT OF CLOSE BUTTON
+        // INIT OF MAIN CLOSE BUTTON //
         closeButton.backgroundColor = .white
         
         // Button corner radius set up
@@ -111,7 +119,7 @@ class ViewController: UIViewController {
         
 
         
-        // INIT OF OPTIONS BUTTON
+        // INIT OF OPTIONS BUTTON //
         optionsButton.backgroundColor = .white
         
         // Button corner radius set up
@@ -144,7 +152,7 @@ class ViewController: UIViewController {
         
         
         
-        // INITIALIZE STEP TEXT
+        // INITIALIZE STEP TEXT//
         // Configuring Step Label
         stepLabel.text = "STEP \(stageInstance[0].id)/\(stageInstance[0].total)"
         stepLabel.font = stepLabel.font.withSize(15)
@@ -161,8 +169,7 @@ class ViewController: UIViewController {
         
         
         
-        // INITIALIZE WELCOME TEXT
-    
+        // INITIALIZE WELCOME TEXT //
         // Configuring Welcome Label
         welcomeLabel.text = "\(stageInstance[0].name)"
         welcomeLabel.font = UIFont.systemFont(ofSize: 22, weight: .bold)
@@ -180,15 +187,15 @@ class ViewController: UIViewController {
         
         
         
+        // INITIALIZE MAIN IMAGE//
         
-        // INITIALIZE MAIN IMAGE
-        
+        // Loading image from API
         if let url = urlString {
             
             mainImageView.loadImage(from: url)
-            
         }
         
+        // Config Image View
         mainImageView.contentMode = .scaleAspectFill
         
         view.addSubview(mainImageView)
@@ -197,14 +204,14 @@ class ViewController: UIViewController {
             
             maker.width.equalTo(view.frame.size.width)
             
-            maker.top.equalTo(welcomeLabel).offset(80)
+            maker.top.equalTo(welcomeLabel).offset(50)
             
         }
         
         
         
         
-        // INITIALIZE DESCRIPTION TEXT
+        // INITIALIZE DESCRIPTION TEXT//
 
         // Configuring description Label
         descriptionLabel.text = "Do you feel shouting Fight! Fight!, with the mad crowd wearing your comfortable toga today?"
@@ -224,7 +231,7 @@ class ViewController: UIViewController {
         
         
         
-        // INIT OF PROGRESS VIEW BOTTOM
+        // INIT OF PROGRESS VIEW BOTTOM//
 
         // Progressview trackTint color
         progressViewBottom.trackTintColor = UIColor(red: 232/255, green: 232/255, blue: 232/255, alpha: 1)
@@ -248,14 +255,12 @@ class ViewController: UIViewController {
             maker.width.equalTo(view.frame.size.width + 10)
             maker.left.equalTo(-10)
             maker.top.equalTo(descriptionLabel).offset(70)
-//            maker.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
         }
         
         
         
         
-        // INITIALIZE MINI PLAYER SWIFT
-
+        // INITIALIZE MINI PLAYER //
         miniPlayer.backgroundColor = .white
         
         view.addSubview(miniPlayer)
@@ -269,7 +274,7 @@ class ViewController: UIViewController {
         
         
         
-        //  INITIALIZE MORE BUTTON IN MINI PLAYER
+        //  INITIALIZE MORE BUTTON IN MINI PLAYER//
 
         // Configuring SF Icon
         let boldConfig3 = UIImage.SymbolConfiguration(pointSize: 27)
@@ -289,10 +294,10 @@ class ViewController: UIViewController {
         
         
         
-        //  INITIALIZE MORE BUTTON IN MINI PLAYER
+        //  INITIALIZE OF PAUSE BUTTON IN MINI PLAYER
     
         // Configuring SF Icon
-        let boldPauseMini = UIImage(systemName: "pause.fill", withConfiguration: boldConfig3)
+        let boldPauseMini = UIImage(systemName: "play.fill", withConfiguration: boldConfig3)
         miniPauseButton.setImage(boldPauseMini, for: .normal)
         miniPauseButton.tintColor = .black
         
@@ -305,12 +310,15 @@ class ViewController: UIViewController {
             maker.top.centerY.equalTo(miniPlayer)
         }
         
+        // Play button functionality
+        
+        miniPauseButton.addTarget(self, action: #selector(playingMusic), for: .touchUpInside)
+        
         
         
         
         
         //  INITIALIZE DESCRIPTION BUTTON IN MINI PLAYER
-    
         // Configuring SF Icon
         miniDescription.setTitleColor(.black, for: .normal)
         miniDescription.setTitle("\(stageInstance[0].name)", for: .normal)
@@ -337,7 +345,6 @@ class ViewController: UIViewController {
 
         
         //  INITIALIZE PLAYFORWARD5 BUTTON IN MINI PLAYER
-
         // Configuring SF Icon
         let boldForwardFiveMini = UIImage(systemName: "goforward.10", withConfiguration: boldConfig3)
         miniForwardFiveButton.setImage(boldForwardFiveMini, for: .normal)
@@ -354,8 +361,7 @@ class ViewController: UIViewController {
         
         
         
-        //  INITIALIZE PLAYFORWARD5 BUTTON IN MINI PLAYER
-    
+        //  INITIALIZE SPEED BUTTON IN MINI PLAYER
         // Configuring SF Icon
         let boldSpeedButton = UIImage(systemName: "1.circle", withConfiguration: boldConfig3)
         speedButton.setImage(boldSpeedButton, for: .normal)
@@ -372,8 +378,7 @@ class ViewController: UIViewController {
         
         
         
-        
-        //  INITIALIZE PLAYFORWARD5 BUTTON IN MINI PLAYER
+        //  INITIALIZE PLAYBACKWARD5 BUTTON IN MINI PLAYER
         // Configuring SF Icon
         let boldBackwardFiveMini = UIImage(systemName: "gobackward.10", withConfiguration: boldConfig3)
         miniBackwardFiveButton.setImage(boldBackwardFiveMini, for: .normal)
@@ -392,19 +397,59 @@ class ViewController: UIViewController {
     }
     
     
-    // Function for opening new screen
+// MARK: - Function for opening new screen
+    
     @objc func openPlayerScreen() {
        
         let playerViewController = PlayerViewController()
     
         let stageInstanceSelf = self.stageInstance
         
-        playerViewController.modalPresentationStyle = .fullScreen
-            
         playerViewController.stageInstance = stageInstanceSelf
         
         present(playerViewController, animated: true, completion: nil)
     
+    }
+    
+// MARK: - Function for playing music
+    
+    @objc func playingMusic() {
+        
+        if let player = player, player.isPlaying {
+            
+            miniPauseButton.setImage(UIImage(systemName: "play.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25)), for: .normal)
+            
+            player.stop()
+            
+        } else {
+            
+            let urlString = Bundle.main.path(forResource: "track", ofType: "mp3")
+            
+            do {
+               try AVAudioSession.sharedInstance().setMode(.default)
+                try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
+                
+                guard let urlString  = urlString else {
+                    return
+                }
+                
+                player = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: urlString))
+                
+                guard let player = player else{
+                    
+                    return
+                }
+                
+                miniPauseButton.setImage(UIImage(systemName: "pause.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25)), for: .normal)
+                player.play()
+                
+                
+            } catch  {
+                print("Something went wrong")
+            }
+        }
+        
+        
     }
 }
 
