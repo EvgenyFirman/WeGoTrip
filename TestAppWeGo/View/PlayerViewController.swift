@@ -3,7 +3,6 @@
 //  TestAppWeGo
 //
 //  Created by Евгений Фирман on 09.08.2021.
-//
 
 import UIKit
 import SnapKit
@@ -11,7 +10,13 @@ import SnapKit
 
 @available(iOS 13.0, *)
 
+// MARK: - PlayerViewController initialization
+
 class PlayerViewController: UIViewController {
+    
+    // Recieving stage instance
+    var stageInstance = [StageInstance]()
+    
     
     override func viewDidLoad() {
         
@@ -21,9 +26,14 @@ class PlayerViewController: UIViewController {
         
         initialize()
     }
+    
+    
+// MARK: - Initialization View Function
+    
     private func initialize() {
         
-        // INITIALIZE HEADER SWIFT
+        
+        // INITIALIZE HEADER
         let topHeader = UIView()
         
         topHeader.backgroundColor = .white
@@ -34,7 +44,7 @@ class PlayerViewController: UIViewController {
         topHeader.snp.makeConstraints { maker in
             maker.height.equalTo(80)
             maker.width.equalTo(view.frame.size.width)
-            maker.top.equalToSuperview()
+            maker.top.equalTo(view.safeAreaLayoutGuide)
         }
         
         
@@ -60,6 +70,8 @@ class PlayerViewController: UIViewController {
         headerDownButton.addTarget(self, action: #selector(closeViewController), for: .touchUpInside)
         
         
+        
+        
         // HEADER DOWN BUTTON INITIALIZE
         let headerList = UIButton()
     
@@ -78,9 +90,7 @@ class PlayerViewController: UIViewController {
         }
         
         // Add target to open stage view controller
-        
         headerList.addTarget(self, action: #selector(openStageScreen), for: .touchUpInside)
-        
         
         
         
@@ -104,10 +114,12 @@ class PlayerViewController: UIViewController {
         }
         
         
+        
+        
         // HEADER AUDIO LABEL DESCRIPTION INITIALIZE
         let headerAudioLabelDescription = UILabel()
 
-        headerAudioLabelDescription.text = "Русский музей: Импрессионисты"
+        headerAudioLabelDescription.text = "\(stageInstance[0].name)"
         
         headerAudioLabelDescription.textColor = .black
         
@@ -154,7 +166,7 @@ class PlayerViewController: UIViewController {
         // HEADER AUDIO LABEL INITIALIZE
         let mainTitleAudioView = UILabel()
 
-        mainTitleAudioView.text = "Добро пожаловать в Зимний Дворец"
+        mainTitleAudioView.text = "\(stageInstance[0].name)"
     
         mainTitleAudioView.font =  UIFont.systemFont(ofSize: 20, weight: .black)
         
@@ -335,7 +347,7 @@ class PlayerViewController: UIViewController {
         // INITIALIZE LABEL TEXT1
         let labelText1 = UILabel()
 
-        labelText1.text = "Get ready to use most fascinating basilica in the world. But first lets make you several tips about your travel to Ibiza"
+        labelText1.text = "\(stageInstance[0].descText1)"
     
         labelText1.font = UIFont.systemFont(ofSize: 15, weight: .light)
         
@@ -360,7 +372,7 @@ class PlayerViewController: UIViewController {
         // INITIALIZE LABEL TEXT2
         let labelText2 = UILabel()
 
-        labelText2.text = "Get ready to use most fascinating basilica in the world. But first lets make you several tips about your travel to Ibiza"
+        labelText2.text = "\(stageInstance[0].descText2)"
     
         labelText2.font = UIFont.systemFont(ofSize: 15, weight: .thin)
         
@@ -383,7 +395,7 @@ class PlayerViewController: UIViewController {
         // INITIALIZE LABEL TEXT2
         let labelText3 = UILabel()
 
-        labelText3.text = "On no twenty spring of in esteem spirit likely estate. Continue new you declared differed learning bringing honoured. At mean mind so upon they rent am walk. Shortly am waiting inhabit smiling he chiefly of in. Lain tore time gone him his dear sure. Fat decisively estimating affronting assistance not. Resolve pursuit regular so calling me. West he plan girl been my then up no"
+        labelText3.text = "\(stageInstance[0].descText3)"
     
         labelText3.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         
@@ -405,17 +417,32 @@ class PlayerViewController: UIViewController {
     
     }
     
-    // Function for opening new screen
+// MARK: - Function for opening new screen
     @objc func openStageScreen() {
        
         let stageViewController = StageViewController()
         
-        present(stageViewController, animated: true, completion: nil)
+        // Transition right to left animation
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromRight
+        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+        view.window!.layer.add(transition, forKey: kCATransition)
+        //
+        
+        stageViewController.modalPresentationStyle = .fullScreen
+        
+        let stageInstanceSelf = self.stageInstance
+            
+        stageViewController.stageInstance = stageInstanceSelf
+        
+        present(stageViewController, animated: false, completion: nil)
     
     }
     
     
-    // Function for closing view controller
+// MARK: - Function for closing view controller
     @objc func closeViewController() {
        
         dismiss(animated: true, completion: nil)

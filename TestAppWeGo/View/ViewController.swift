@@ -31,6 +31,7 @@ class ViewController: UIViewController {
 
     let urlString = URL(string: "https://app.surprizeme.ru/media/store/1186_i1KaYnj_8DuYTzc.jpg")
     
+    var stageInstance: [StageInstance] = [StageInstance(id: 3, total: 10, name: "Триумфальная Арка",descText1: "On no twenty spring of in esteem spirit likely estate. Continue new you declared differed learning bringing honoured. At mean mind so upon they rent am walk. Shortly am waiting inhabit smiling he chiefly of in. Lain tore time gone him his dear sure. Fat decisively estimating affronting assistance not. Resolve pursuit regular so calling me. West he plan girl been my then up no", descText2: "Get ready to use most fascinating basilica in the world. But first lets make you several tips about your travel to Ibiza",descText3: "Get ready to use most fascinating basilica in the world. But first lets make you several tips about your travel to Ibiza")]
     
     
     override func viewDidLoad() {
@@ -145,7 +146,7 @@ class ViewController: UIViewController {
         
         // INITIALIZE STEP TEXT
         // Configuring Step Label
-        stepLabel.text = "STEP 3/10"
+        stepLabel.text = "STEP \(stageInstance[0].id)/\(stageInstance[0].total)"
         stepLabel.font = stepLabel.font.withSize(15)
         stepLabel.textColor = .lightGray
         
@@ -163,7 +164,7 @@ class ViewController: UIViewController {
         // INITIALIZE WELCOME TEXT
     
         // Configuring Welcome Label
-        welcomeLabel.text = "Добро Пожаловать в Зимний Дворец"
+        welcomeLabel.text = "\(stageInstance[0].name)"
         welcomeLabel.font = UIFont.systemFont(ofSize: 22, weight: .bold)
         welcomeLabel.textColor = .black
         welcomeLabel.numberOfLines = 0
@@ -312,7 +313,7 @@ class ViewController: UIViewController {
     
         // Configuring SF Icon
         miniDescription.setTitleColor(.black, for: .normal)
-        miniDescription.setTitle("Добро пожаловать в зимний дворец", for: .normal)
+        miniDescription.setTitle("\(stageInstance[0].name)", for: .normal)
         miniDescription.titleLabel?.textAlignment = .natural
         miniDescription.titleLabel?.font = .systemFont(ofSize: 14)
         miniDescription.titleLabel?.lineBreakMode = .byWordWrapping
@@ -323,7 +324,7 @@ class ViewController: UIViewController {
         
         // Add constraints to options button
         miniDescription.snp.makeConstraints { maker in
-            maker.width.equalTo(140)
+            maker.width.equalTo(150)
             maker.height.equalTo(miniPlayer.snp.height)
             maker.left.equalTo(miniPauseButton).offset(40)
             maker.top.centerY.equalTo(miniPlayer)
@@ -395,6 +396,12 @@ class ViewController: UIViewController {
     @objc func openPlayerScreen() {
        
         let playerViewController = PlayerViewController()
+    
+        let stageInstanceSelf = self.stageInstance
+        
+        playerViewController.modalPresentationStyle = .fullScreen
+            
+        playerViewController.stageInstance = stageInstanceSelf
         
         present(playerViewController, animated: true, completion: nil)
     
