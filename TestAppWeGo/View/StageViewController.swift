@@ -13,10 +13,9 @@ import UIKit
 
 class StageViewController: UIViewController {
     
-    
     let tableView = UITableView()
     
-    var characters = ["Link", "Zelda", "Ganondorf", "Midna"]
+    var stageInstance = [StageInstance]()
     
     
     override func viewDidLoad(){
@@ -25,11 +24,13 @@ class StageViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        initialize()
+        tableView.backgroundColor = .white
         
         tableView.dataSource = self
         
         tableView.delegate = self
+        
+        initialize()
         
         setUpTableViewCell()
         
@@ -49,7 +50,7 @@ class StageViewController: UIViewController {
         topHeader.snp.makeConstraints { maker in
             maker.height.equalTo(80)
             maker.width.equalTo(view.frame.size.width)
-            maker.top.equalToSuperview()
+            maker.top.equalTo(view.safeAreaLayoutGuide)
         }
         
         
@@ -122,7 +123,7 @@ class StageViewController: UIViewController {
         // HEADER AUDIO LABEL DESCRIPTION INITIALIZE
         let headerAudioLabelDescription = UILabel()
 
-        headerAudioLabelDescription.text = "Русский музей: Импрессионисты"
+        headerAudioLabelDescription.text = "\(stageInstance[0].name)"
         
         headerAudioLabelDescription.textColor = .black
         
@@ -143,6 +144,8 @@ class StageViewController: UIViewController {
         
         view.addSubview(tableView)
         
+        tableView.separatorStyle = .none
+        
         tableView.snp.makeConstraints { maker in
             maker.top.equalTo(topHeader.snp.bottom).offset(5)
             maker.left.equalTo(view.safeAreaLayoutGuide.snp.left)
@@ -161,25 +164,30 @@ class StageViewController: UIViewController {
     // Register TableViewCell
     
     func setUpTableViewCell() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(StageTableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
 }
+
 
 @available(iOS 13.0, *)
 
 extension StageViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return characters.count
+        
+        return stageInstance.count
+        
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! StageTableViewCell
         
-        cell.textLabel?.text = characters[indexPath.row]
+        cell.countLabel.text = "\(stageInstance[0].id)/\(stageInstance[0].total)"
+        
+        cell.descriptionLabel.text = stageInstance[indexPath.row].name
         
         return cell
     }

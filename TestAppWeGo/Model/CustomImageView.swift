@@ -8,9 +8,9 @@
 import UIKit
 
 class CustomImageView: UIImageView {
+    
 
     // Loading image from remote API
-    
     func loadImage(from url: URL) {
         
         let task = URLSession.shared.dataTask(with: url) { (data,response,error) in
@@ -24,11 +24,13 @@ class CustomImageView: UIImageView {
             }
             
             DispatchQueue.main.async {
+                
                 self.image = newImage
+                
             }
         }
         
         task.resume()
-        
     }
+    
 }
