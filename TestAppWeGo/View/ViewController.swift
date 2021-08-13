@@ -411,45 +411,92 @@ class ViewController: UIViewController {
     
     }
     
+    
+
 // MARK: - Function for playing music
     
     @objc func playingMusic() {
         
+        // Initializing source for playing music
+        let urlString = Bundle.main.path(forResource: "track", ofType: "mp3")
+        
+
         if let player = player, player.isPlaying {
+
+            player.pause()
             
             miniPauseButton.setImage(UIImage(systemName: "play.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25)), for: .normal)
-            
-            player.stop()
-            
-        } else {
-            
-            let urlString = Bundle.main.path(forResource: "track", ofType: "mp3")
-            
+
+        }  else  {
+
             do {
+
                try AVAudioSession.sharedInstance().setMode(.default)
+
                 try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
-                
+
                 guard let urlString  = urlString else {
+
                     return
                 }
-                
+
                 player = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: urlString))
-                
+
                 guard let player = player else{
-                    
+
                     return
                 }
-                
-                miniPauseButton.setImage(UIImage(systemName: "pause.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25)), for: .normal)
+
                 player.play()
                 
+                // Initializing ProgressMusicTrack
+                progressViewTrack(musicProgress)
                 
+        
+                miniPauseButton.setImage(UIImage(systemName: "pause.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25)), for: .normal)
+
+
             } catch  {
+
                 print("Something went wrong")
+
             }
+
         }
+       
+     
+    }
+    
+// MARK: - SetUP ProgressView for tracking music and Config
+    
+    func progressViewTrack(_ musicProgress: () -> ()) {
         
+        // Setting up progressviewTrack
+        progressViewBottom.progress = 0.0
         
+        let updater = CADisplayLink(target: self, selector: #selector(self.musicProgress))
+        
+        updater.preferredFramesPerSecond = 100
+        
+        updater.add(to: RunLoop.current, forMode: RunLoop.Mode.common)
+        
+        musicProgress()
+    }
+    
+// MARK: - SetUP ProgressViewBottom Music Function
+    
+    @objc func musicProgress() {
+        
+        if let currentTime = self.player?.currentTime, let duration = self.player?.duration {
+            
+            let normalizedTime = Float(currentTime)/Float(duration)
+            
+            print(normalizedTime)
+            
+            self.progressViewBottom.progress = normalizedTime
+            
+        }
+
     }
 }
 
